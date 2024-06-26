@@ -1,0 +1,1 @@
+## Mini Email Campaign App
