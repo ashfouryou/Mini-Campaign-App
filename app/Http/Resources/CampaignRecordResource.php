@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CampaignResource extends JsonResource
+class CampaignRecordResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,14 +16,13 @@ class CampaignResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'campaign_id' => $this->campaign_id,
             'name' => $this->name,
-            'user_id' => $this->user_id,
+            'email' => $this->email,
+            'content' => $this->content,
+            'campaign_date' => $this->campaign_date,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'created_at_formatted' => $this->created_at->toFormattedDateString(),
-            'updated_at_formatted' => $this->updated_at->toFormattedDateString(),
-            'records_count' => $this->records_count,
-            'records' => CampaignRecordResource::collection($this->whenLoaded('records')),
         ];
     }
 }
