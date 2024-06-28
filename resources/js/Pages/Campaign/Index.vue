@@ -2,6 +2,8 @@
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Pagination from '@/Components/Pagination.vue';
+import { Link, useForm } from "@inertiajs/vue3";
+
 
 
 defineProps({
@@ -10,6 +12,16 @@ defineProps({
         required: true,
     },
 });
+
+const deleteForm = useForm({});
+
+const deleteCampaign = (id) => {
+    if (confirm("Are you sure you want to delete this campaign?")) {
+        deleteForm.delete(route("campaign.destroy", id), {
+            preserveScroll: true,
+        });
+    }
+};
 
 </script>
 
@@ -138,7 +150,13 @@ defineProps({
                                                         Edit
                                                     </Link>
                                                     <button
-                                                        class="ml-2 text-indigo-600 hover:text-indigo-900">
+                                                        @click="
+                                                            deleteCampaign(
+                                                                campaigns.id
+                                                            )
+                                                        "
+                                                        class="ml-2 text-indigo-600 hover:text-indigo-900"
+                                                    >
                                                         Delete
                                                     </button>
                                                 </td>       
