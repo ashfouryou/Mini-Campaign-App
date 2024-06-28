@@ -1,6 +1,8 @@
 <script setup>
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import Pagination from '@/Components/Pagination.vue';
+
 
 defineProps({
     campaigns: {
@@ -146,7 +148,6 @@ defineProps({
                                 </div>
                                 <Pagination
                                     :data="campaigns"
-                                    :pageNumberUpdated="pageNumberUpdated"
                                 />
                             </div>
                         </div>
