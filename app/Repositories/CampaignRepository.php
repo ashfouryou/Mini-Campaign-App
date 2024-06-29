@@ -7,16 +7,25 @@ use App\Models\CampaignRecord;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\Builder;
 
 class CampaignRepository implements CampaignRepositoryInterface
 {
-    public function getAllCampaignsWithRecords($userId, $perPage){
-        return Campaign::where('user_id', $userId)
-            ->with('records')
+    public function getAllCampaignsWithRecords($userId, $perPage, $search = null){
+        $query = Campaign::where('user_id', $userId)
+            ->with(['records' => function($query) {
+                $query->select('id', 'campaign_id'); 
+            }])
             ->withCount('records')
-            ->orderBy('created_at', 'desc')
-            ->paginate($perPage);
+            ->orderBy('created_at', 'desc');
+    
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+    
+        return $query->paginate($perPage); 
     }
+    
 
     public function getAllCampaigns($userId, $perPage){
         return Campaign::where('user_id', $userId)->paginate($perPage);

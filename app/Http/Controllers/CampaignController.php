@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Repositories\CampaignRepositoryInterface;
 use App\Http\Requests\CampaignRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Campaign;
+use Illuminate\Database\Eloquent\Builder;
 
 class CampaignController extends Controller
 {
@@ -19,8 +21,9 @@ class CampaignController extends Controller
         $this->campaignRepository = $campaignRepository;
     }
 
-    function index() {
-        $campaigns = $this->campaignRepository->getAllCampaignsWithRecords(Auth::id(), 10);
+    function index(Request $request) {
+        $search = $request->query('search');
+        $campaigns = $this->campaignRepository->getAllCampaignsWithRecords(Auth::id(), 5,$search);
         return Inertia::render('Campaign/Index', [
             'campaigns' => CampaignResource::collection($campaigns)
         ]);

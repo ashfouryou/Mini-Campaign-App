@@ -2,7 +2,8 @@
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Pagination from '@/Components/Pagination.vue';
-import { Link, useForm } from "@inertiajs/vue3";
+import { Head, Link, router, useForm, usePage } from "@inertiajs/vue3";
+import { ref, watch, computed } from "vue";
 
 
 
@@ -13,6 +14,32 @@ defineProps({
     },
 });
 
+let pageNumber = ref(1),
+    searchTerm = ref(usePage().props.search ?? "");
+
+const pageNumberUpdated = (link) => {
+    pageNumber.value = link.url.split("=")[1];
+};
+
+let campaignsUrl = computed(() => {
+    const url = new URL(route("campaign.index"));
+    url.searchParams.set("page", pageNumber.value);
+    if (searchTerm.value) {
+        url.searchParams.set("search", searchTerm.value);
+    }
+    return url;
+});
+
+watch(
+    () => campaignsUrl.value,
+    (newValue) => {
+        router.visit(newValue, {
+            replace: true,
+            preserveState: true,
+            preserveScroll: true,
+        });
+    }
+);
 const deleteForm = useForm({});
 
 const deleteCampaign = (id) => {
@@ -27,7 +54,6 @@ const deleteCampaign = (id) => {
 
 <template>
     <Head title="Campaigns" />
-
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
