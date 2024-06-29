@@ -49,10 +49,25 @@ class CampaignRepository implements CampaignRepositoryInterface
         return Campaign::with('records')->withCount('records')->findOrFail($id);
     }
 
-    public function updateCampaign($id, array $data){
+    public function updateCampaign($id, array $data, $filePath = null){
         $campaign = Campaign::findOrFail($id);
         $campaign->update($data);
-        return $campaign;
+        if ($filePath) {
+            $validationResult = $this->validateCSV($filePath);
+            if ($validationResult['hasErrors']) {
+                return [
+                    'hasErrors' => true,
+                    'errorFileName' => $validationResult['errorFileName'],
+                ];
+            }
+            CampaignRecord::where('campaign_id', $id)->delete();
+            $this->processCSV($filePath, $id);
+        }
+
+        return [
+            'hasErrors' => false,
+            'campaign' => $campaign,
+        ];
     }
 
     public function deleteCampaign($id){

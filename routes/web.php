@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('campaign', CampaignController::class);
     Route::get('/download-file/{type}/{fileName}/{delete}', [FileDownloadController::class, 'download'])->name('download.file');
+    Route::post('/campaign/{campaign}', [CampaignController::class, 'update'])->name('campaign.update');
 });
 
 require __DIR__.'/auth.php';
