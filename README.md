@@ -58,3 +58,48 @@ MiniCampaignApp is designed to streamline the management and processing of email
     Database: MySQL
     Version Control: Git, GitHub
 
+
+### Installation Guide
+
+1. **Clone the repository:**
+    ```sh
+    git clone https://github.com/your-repository-url/mini-campaign-app.git
+    ```
+2. **Navigate to the project directory:**
+    ```sh
+    cd mini-campaign-app
+    ```
+3. **Install Composer dependencies:**
+    ```sh
+    composer install
+    ```
+4. **Install NPM dependencies:**
+    ```sh
+    npm install
+    ```
+5. **Generate application key:**
+    ```sh
+    php artisan key:generate
+    ```
+6. **Configure `.env` file:**
+    - Copy `.env.example` to `.env` and update the necessary environment variables (database connection, mail settings, etc.)
+    ```sh
+    cp .env.example .env
+    ```
+7. **Run database migrations:**
+    ```sh
+    php artisan migrate
+    ```
+8. **Build front-end assets:**
+    ```sh
+    npm run dev
+    ```
+9. **Run the queue worker:**
+    ```sh
+    php artisan queue:work
+    ```
+## Conclusion
+- The MiniCampaignApp project has been successfully completed, meeting all the specified requirements and incorporating best practices in software development.
+
+
+
