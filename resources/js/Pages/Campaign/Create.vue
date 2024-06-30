@@ -68,7 +68,7 @@ const submitForm = () => {
                                         :href="`/download-file/sample_campaign_file/sample_campaign_import_file.csv/true`" 
                                         class="text-sm text-indigo-600 underline"
                                     >
-                                    Download Sample CSV
+                                    Download Sample CSV file for Campaign Import
                                     </a>
                                 </div>
 

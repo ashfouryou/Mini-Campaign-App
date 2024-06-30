@@ -87,9 +87,6 @@ defineProps({
                                 Easily create new email campaigns by uploading a CSV file with your contacts. Customize your campaign with a predefined HTML template.
                             </p>
                         </div>
-
-                        <ArrowRightIcon class="self-center shrink-0  w-6 h-6 mx-6" />
-
                     </a>
 
                     <a
@@ -107,12 +104,9 @@ defineProps({
                             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Track Progress</h2>
 
                             <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Monitor the progress of your campaigns in real-time. View detailed stats on sent, delivered, and opened emails.
+                                Monitor the progress of your campaigns in real-time. View detailed stats on sent, delivered, and failed emails.
                             </p>
-                        </div>
-                        
-                        <ArrowRightIcon class="self-center shrink-0  w-6 h-6 mx-6" />
-
+                        </div> 
                     </a>
 
                     <a
@@ -132,8 +126,6 @@ defineProps({
                                 You can create multiple campaigns and manage them all from a single dashboard. Easily view and edit your campaigns.
                             </p>
                         </div>
-
-                        <ArrowRightIcon class="self-center shrink-0  w-6 h-6 mx-6" />
                     </a>
 
                     <div
@@ -154,7 +146,6 @@ defineProps({
                                 Our app uses Laravel's queue system to process campaigns efficiently and at scale, ensuring your campaigns are delivered on time.
                             </p>
                         </div>
-                        <ArrowRightIcon class="self-center shrink-0  w-6 h-6 mx-6" />
                     </div>
                 </div>
             </div>
