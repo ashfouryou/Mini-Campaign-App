@@ -24,6 +24,7 @@ class CampaignRequest extends FormRequest
         return [
             'name' => 'required|string',
             'file' => 'required|file|mimes:csv,txt|max:2048',
+            'description' => 'nullable|string',
         ];
     }
 

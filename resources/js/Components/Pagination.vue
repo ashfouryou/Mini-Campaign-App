@@ -26,29 +26,23 @@ const updatePageNumber = (link) => {
                     <div
                         class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"
                     >
-                        <div>
-                            <p class="text-sm text-gray-700">
-                                Showing
-                                <!-- space -->
-                                <span class="font-medium">{{
-                                    data.meta.from
-                                }}</span>
-                                <!-- space -->
-                                to
-                                <!-- space -->
-                                <span class="font-medium">{{
-                                    data.meta.to
-                                }}</span>
-                                <!-- space -->
-                                of
-                                <!-- space -->
-                                <span class="font-medium">{{
-                                    data.meta.total
-                                }}</span>
-                                <!-- space -->
-                                results
-                            </p>
-                        </div>
+                    <div v-if="data && data.meta && data.meta.total">
+                        <p class="text-sm text-gray-700">
+                            Showing
+                            <span class="font-medium">{{ data.meta.from }}</span>
+                            to
+                            <span class="font-medium">{{ data.meta.to }}</span>
+                            of
+                            <span class="font-medium">{{ data.meta.total }}</span>
+                            results
+                        </p>
+                    </div>
+                    <div v-else>
+                        <p class="text-sm text-gray-700">
+                            No Campaign data present.
+                        </p>
+                    </div>
+
                         <div>
                             <nav
                                 class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"

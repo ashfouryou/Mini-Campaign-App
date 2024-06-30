@@ -4,6 +4,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Pagination from '@/Components/Pagination.vue';
 import { Head, Link, router, useForm, usePage } from "@inertiajs/vue3";
 import { ref, watch, computed } from "vue";
+import axios from "axios";
 
 
 
@@ -48,6 +49,15 @@ const deleteCampaign = (id) => {
             preserveScroll: true,
         });
     }
+};
+
+
+const processCampaign = (id) => {
+    axios.post(route('campaigns.process', id)).then(response => {
+        // handle success
+    }).catch(error => {
+        // handle error
+    });
 };
 
 </script>
@@ -130,9 +140,27 @@ const deleteCampaign = (id) => {
                                                 </th>
                                                 <th
                                                     scope="col"
+                                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                                                >
+                                                Processed
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                                                >
+                                                Pending
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                                                >
+                                                Failed
+                                                </th>
+                                                <th
+                                                    scope="col"
                                                     class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                                                 >
-                                                    Total Records
+                                                    Total 
                                                 </th>
                                                 <th
                                                     scope="col"
@@ -160,6 +188,15 @@ const deleteCampaign = (id) => {
                                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                     {{ campaigns.name }}
                                                 </td> 
+                                                <td class="whitespace nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                    {{ campaigns.processed_records_count }}
+                                                </td>
+                                                <td class="whitespace nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                    {{ campaigns.pending_records_count }}
+                                                </td>
+                                                <td class="whitespace nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                    {{ campaigns.failed_records_count }}
+                                                </td>
                                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                     {{ campaigns.records_count }}
                                                 </td> 

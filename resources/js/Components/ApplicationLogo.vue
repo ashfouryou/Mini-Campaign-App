@@ -1,6 +1,4 @@
-<script setup>
-import { EnvelopeOpenIcon} from '@heroicons/vue/24/solid';
-</script>
 <template>
-        <EnvelopeOpenIcon class="h-20 w-20 text-custom-icon-blue " />
+    <img src="/images/logo.png" alt="logo" class="!h-[40px] !w-[250px]" />
 </template>
+    

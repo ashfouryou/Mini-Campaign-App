@@ -9,7 +9,7 @@ class CampaignRecord extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['campaign_id', 'name', 'email', 'content', 'campaign_date'];
+    protected $fillable = ['campaign_id', 'name', 'email', 'content', 'campaign_date', 'status'];
 
     public function campaign(){
         return $this->belongsTo(Campaign::class);

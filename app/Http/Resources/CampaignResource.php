@@ -23,7 +23,11 @@ class CampaignResource extends JsonResource
             'created_at_formatted' => $this->created_at->toFormattedDateString(),
             'updated_at_formatted' => $this->updated_at->toFormattedDateString(),
             'records_count' => $this->records_count,
+            'description' => $this->description,
             'records' => CampaignRecordResource::collection($this->whenLoaded('records')),
+            'pending_records_count' => $this->pending_records_count,
+            'processed_records_count' => $this->processed_records_count,
+            'failed_records_count' => $this->failed_records_count,
         ];
     }
 }

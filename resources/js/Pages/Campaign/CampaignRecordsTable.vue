@@ -25,10 +25,7 @@ const props = defineProps({
                             Email
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Content
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Campaign Date
+                            Created Date
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Status
@@ -39,8 +36,9 @@ const props = defineProps({
                     <tr v-for="record in records" :key="record.id" class="hover:bg-gray-100">
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-medium">{{ record.name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ record.email }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ record.content }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ record.campaign_date }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ record.created_at_formatted }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ record.status }}</td>
+
                     </tr>
                 </tbody>
             </table>

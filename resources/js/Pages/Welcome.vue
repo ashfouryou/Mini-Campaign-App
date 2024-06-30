@@ -1,6 +1,7 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import { AcademicCapIcon, ArrowRightIcon, Bars2Icon, Bars4Icon, ChartPieIcon, EnvelopeOpenIcon, GlobeAsiaAustraliaIcon } from '@heroicons/vue/24/solid';
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
 defineProps({
     canLogin: {
@@ -29,7 +30,7 @@ defineProps({
         <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
             <Link
                 v-if="$page.props.auth.user"
-                :href="route('dashboard')"
+                :href="route('campaign.index')"
                 class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm "
                 >Dashboard</Link
             >
@@ -52,10 +53,10 @@ defineProps({
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
-                <EnvelopeOpenIcon class="h-16 w-16 text-custom-icon-blue bg-gray-100 dark:bg-gray-900" />
+                <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800"/>
             </div>
 
-            <div class="mt-16">
+            <div class="mt-8">
                 <h1 class="text-4xl font-bold text-gray-900 dark:text-white text-center">
                     Welcome to Mini Email Campaign App
                 </h1>
