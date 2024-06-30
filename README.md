@@ -96,7 +96,7 @@ MiniCampaignApp is designed to streamline the management and processing of email
     ```
 9. **Run the queue worker:**
     ```sh
-    php artisan queue:work
+    php artisan queue:work --queue=emails --tries=3 --sleep=3
     ```
 ## Conclusion
 - The MiniCampaignApp project has been successfully completed, meeting all the specified requirements and incorporating best practices in software development.

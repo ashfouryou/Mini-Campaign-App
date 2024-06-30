@@ -42,7 +42,6 @@ const submitForm = () => {
     
 };
 </script>
-
 <template>
     <Head title="Campaigns" />
     <AuthenticatedLayout>
