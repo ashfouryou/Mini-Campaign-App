@@ -23,7 +23,7 @@ class CampaignRecordResource extends JsonResource
             'campaign_date' => $this->campaign_date,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'status' => $this->status,
+            'status' => ucfirst($this->status),
             'created_at_formatted' => $this->created_at?$this->created_at->toFormattedDateString():null,
         ];
 
